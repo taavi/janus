@@ -9,11 +9,16 @@ set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set list listchars=tab:\ \ ,trail:·
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set list listchars=tab:▸\ ,eol:¬,trail:·
+set noeol
+
+" Window settings
+set wrap
+set lbr
+set textwidth=120
 
 " Searching
 set hlsearch
@@ -76,7 +81,7 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python  set tabstop=4 textwidth=79
+au FileType python  set tabstop=4 textwidth=79 expandtab
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -122,7 +127,8 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+color evening
+set guifont=Monaco:h12
 
 " Directories for swp files
 set backupdir=~/.vim/backup
