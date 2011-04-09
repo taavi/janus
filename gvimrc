@@ -66,6 +66,7 @@ set guioptions-=T
 
 " Default gui color scheme
 set background=light
+let g:solarized_visibility='low'
 color solarized
 
 " ConqueTerm wrapper
