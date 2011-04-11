@@ -17,7 +17,6 @@ set noeol
 
 " Window settings
 set wrap
-set lbr
 set textwidth=120
 
 " Searching
