@@ -51,6 +51,7 @@ map <Leader><Leader> :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
+let tlist_php_settings = 'php;c:class;d:constant;f:function'
 
 " Remember last location in file
 if has("autocmd")
