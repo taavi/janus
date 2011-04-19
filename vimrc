@@ -38,6 +38,8 @@ set statusline=%t\ %y\ format:\ %{&ff};\ [%l,%c]
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
 
+let mapleader=','
+
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
 map <Leader>n :NERDTreeToggle<CR>
@@ -52,6 +54,10 @@ map <Leader><Leader> :ZoomWin<CR>
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 let tlist_php_settings = 'php;c:class;d:constant;f:function'
+
+" Move to occurances
+map <Leader>f [I:let nr = input("Which one:")<Bar>exe "normal " . nr . "[\t"<CR>
+
 
 " Remember last location in file
 if has("autocmd")
