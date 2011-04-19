@@ -95,6 +95,9 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set tabstop=4 textwidth=79 expandtab
 
+" Highlight JSON like Javascript
+au BufNewFile,BufRead *.json set ft=javascript
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
