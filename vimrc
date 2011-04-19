@@ -58,6 +58,8 @@ let tlist_php_settings = 'php;c:class;d:constant;f:function'
 " Move to occurances
 map <Leader>f [I:let nr = input("Which one:")<Bar>exe "normal " . nr . "[\t"<CR>
 
+" Clear search highlighting
+map <Leader><Space> :nohl<CR>
 
 " Remember last location in file
 if has("autocmd")
