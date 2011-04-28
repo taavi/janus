@@ -69,6 +69,8 @@ set background=light
 let g:solarized_visibility='low'
 color solarized
 
+let g:ragtag_global_maps = 1
+
 " ConqueTerm wrapper
 function StartTerm()
   execute 'ConqueTerm ' . $SHELL . ' --login'

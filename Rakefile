@@ -223,6 +223,7 @@ end
 vim_plugin_task 'jinja', 'http://www.vim.org/scripts/download_script.php?src_id=8666', 'syntax'
 vim_plugin_task 'htmljinja', 'http://www.vim.org/scripts/download_script.php?src_id=6961', 'syntax'
 vim_plugin_task 'autoclose', 'http://www.vim.org/scripts/download_script.php?src_id=10873', 'plugin'
+vim_plugin_task 'ragtag', 'https://github.com/tpope/vim-ragtag.git'
 
 if File.exists?(janus = File.expand_path("~/.janus.rake"))
   puts "Loading your custom rake file"
