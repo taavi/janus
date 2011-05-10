@@ -8,7 +8,6 @@ syntax on
 set encoding=utf-8
 
 " Whitespace stuff
-set nowrap
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -17,6 +16,7 @@ set noeol
 
 " Window settings
 set wrap
+set lbr
 set textwidth=120
 
 " Searching
