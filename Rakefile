@@ -141,10 +141,7 @@ vim_plugin_task "taglist",          "git://github.com/vim-scripts/taglist.vim.gi
 vim_plugin_task "vividchalk",       "git://github.com/tpope/vim-vividchalk.git"
 vim_plugin_task "solarized",        "git://github.com/altercation/vim-colors-solarized.git"
 vim_plugin_task "supertab",         "git://github.com/ervandew/supertab.git"
-vim_plugin_task "cucumber",         "git://github.com/tpope/vim-cucumber.git"
 vim_plugin_task "textile",          "git://github.com/timcharper/textile.vim.git"
-vim_plugin_task "rails",            "git://github.com/tpope/vim-rails.git"
-vim_plugin_task "rspec",            "git://github.com/taq/vim-rspec.git"
 vim_plugin_task "zoomwin",          "git://github.com/vim-scripts/ZoomWin.git"
 vim_plugin_task "snipmate",         "git://github.com/msanders/snipmate.vim.git"
 vim_plugin_task "markdown",         "git://github.com/tpope/vim-markdown.git"
@@ -222,7 +219,7 @@ end
 vim_plugin_task 'jinja', 'http://www.vim.org/scripts/download_script.php?src_id=8666', 'syntax'
 vim_plugin_task 'htmljinja', 'http://www.vim.org/scripts/download_script.php?src_id=6961', 'syntax'
 vim_plugin_task 'autoclose', 'http://www.vim.org/scripts/download_script.php?src_id=10873', 'plugin'
-vim_plugin_task 'ragtag', 'https://github.com/tpope/vim-ragtag.git'
+vim_plugin_task 'ragtag', 'https://github.com/markstory/vim-ragtag.git'
 
 if File.exists?(janus = File.expand_path("~/.janus.rake"))
   puts "Loading your custom rake file"
