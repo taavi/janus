@@ -6,6 +6,7 @@ after
 autoload
 doc
 plugin
+python
 ruby
 snippets
 syntax
