@@ -73,9 +73,9 @@ def vim_plugin_task(name, repo=nil, type=nil)
               File.open(path, 'w'){ |f| f.write(data) }
             end
           end
-		when /vim$/
-			mkdir_p dir
-			sh "mv tmp/#{filename} #{dir}/#{filename}"
+        when /vim$/
+          mkdir_p dir
+          sh "mv tmp/#{filename} #{dir}/#{filename}"
         end
       end
 
