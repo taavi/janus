@@ -274,6 +274,10 @@ has support for much more.
 **Tip**: Check out [Hammer's README](https://github.com/robgleeson/hammer.vim#readme)
 to see the requirements for previewing other file formats.
 
+## JSHint
+
+Janus comes with http://jshint.com/ integration!
+
 ## Additional Syntaxes
 
 Janus ships with a few additional syntaxes:

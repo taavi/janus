@@ -8,12 +8,16 @@ syntax on
 set encoding=utf-8
 
 " Whitespace stuff
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set list listchars=tab:\ \ ,trail:·
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set list listchars=tab:▸\ ,eol:¬,trail:·
+set noeol
+
+" Window settings
+set wrap
+set lbr
+set textwidth=120
 
 " Searching
 set hlsearch
@@ -23,15 +27,18 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.pyc
 
 " Status bar
 set laststatus=2
+set statusline=%t\ %y\ format:\ %{&ff};\ [%l,%c]
 
 " Without setting this, ZoomWin restores windows in a way that causes
 " equalalways behavior to be triggered the next time CommandT is used.
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
+
+let mapleader=','
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
@@ -46,6 +53,13 @@ map <Leader><Leader> :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
+let tlist_php_settings = 'php;c:class;d:constant;f:function'
+
+" Move to occurances
+map <Leader>f [I:let nr = input("Which one:")<Bar>exe "normal " . nr . "[\t"<CR>
+
+" Clear search highlighting
+map <Leader><Space> :nohl<CR>
 
 " Remember last location in file
 if has("autocmd")
@@ -70,6 +84,9 @@ au FileType make set noexpandtab
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
+" Map .twig files as jinja templates
+au BufRead,BufNewFile *.{twig}  set ft=htmljinja
+
 " md, markdown, and mk are markdown and define buffer-local preview
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
@@ -79,7 +96,10 @@ au BufNewFile,BufRead *.json set ft=javascript
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandatab
+
+" Highlight JSON like Javascript
+au BufNewFile,BufRead *.json set ft=javascript
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -125,14 +145,15 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+color evening
+set guifont=Monaco:h12
 
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
-" Turn off jslint errors by default
-let g:JSLintHighlightErrorLine = 0
+" Turn on jshint errors by default
+let g:JSLintHighlightErrorLine = 1
 
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1

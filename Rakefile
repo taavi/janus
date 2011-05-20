@@ -7,7 +7,7 @@ VIM::Dirs.each do |dir|
   directory(dir)
 end
 
-def vim_plugin_task(name, repo=nil)
+def vim_plugin_task(name, repo=nil, type=nil)
   cwd = File.expand_path("../", __FILE__)
   dir = File.expand_path("tmp/#{name}")
   subdirs = VIM::Dirs
@@ -33,8 +33,8 @@ def vim_plugin_task(name, repo=nil)
         else
           raise ArgumentError, 'unrecognized source url for plugin'
         end
-
         case filename
+
         when /zip$/
           sh "unzip -o tmp/#{filename} -d #{dir}"
 
@@ -49,8 +49,8 @@ def vim_plugin_task(name, repo=nil)
             sh "gunzip -f tmp/#{filename}"
             filename = File.basename(filename, '.gz')
           end
-
           # TODO: move this into the install task
+
           mkdir_p dir
           lines = File.readlines("tmp/#{filename}")
           current = lines.shift until current =~ /finish$/ # find finish line
@@ -73,6 +73,9 @@ def vim_plugin_task(name, repo=nil)
               File.open(path, 'w'){ |f| f.write(data) }
             end
           end
+		when /vim$/
+			mkdir_p dir
+			sh "mv tmp/#{filename} #{dir}/#{filename}"
         end
       end
 
@@ -90,6 +93,8 @@ def vim_plugin_task(name, repo=nil)
             sh "rake install"
           elsif File.exists?("install.sh")
             sh "sh install.sh"
+          elsif File.exists?(dir + '/' + File.basename(dir) + '.vim')
+            sh "cp -rf #{dir}/* #{cwd}/#{type}"
           else
             subdirs.each do |subdir|
               if File.exists?(subdir)
@@ -132,7 +137,8 @@ vim_plugin_task "git",              "git://github.com/tpope/vim-git.git"
 vim_plugin_task "haml",             "git://github.com/tpope/vim-haml.git"
 vim_plugin_task "indent_object",    "git://github.com/michaeljsmith/vim-indent-object.git"
 vim_plugin_task "javascript",       "git://github.com/pangloss/vim-javascript.git"
-vim_plugin_task "jslint",           "git://github.com/hallettj/jslint.vim.git"
+vim_plugin_task "jshint",           "git://github.com/wookiehangover/jshint.vim.git"
+vim_plugin_task "markdown_preview", "git://github.com/robgleeson/vim-markdown-preview.git"
 vim_plugin_task "nerdtree",         "git://github.com/wycats/nerdtree.git"
 vim_plugin_task "nerdcommenter",    "git://github.com/ddollar/nerdcommenter.git"
 vim_plugin_task "surround",         "git://github.com/tpope/vim-surround.git"
@@ -140,10 +146,7 @@ vim_plugin_task "taglist",          "git://github.com/vim-scripts/taglist.vim.gi
 vim_plugin_task "vividchalk",       "git://github.com/tpope/vim-vividchalk.git"
 vim_plugin_task "solarized",        "git://github.com/altercation/vim-colors-solarized.git"
 vim_plugin_task "supertab",         "git://github.com/ervandew/supertab.git"
-vim_plugin_task "cucumber",         "git://github.com/tpope/vim-cucumber.git"
 vim_plugin_task "textile",          "git://github.com/timcharper/textile.vim.git"
-vim_plugin_task "rails",            "git://github.com/tpope/vim-rails.git"
-vim_plugin_task "rspec",            "git://github.com/taq/vim-rspec.git"
 vim_plugin_task "zoomwin",          "git://github.com/vim-scripts/ZoomWin.git"
 vim_plugin_task "snipmate",         "git://github.com/msanders/snipmate.vim.git"
 vim_plugin_task "markdown",         "git://github.com/tpope/vim-markdown.git"
@@ -220,6 +223,11 @@ end
 vim_plugin_task "vwilight" do
   sh "curl https://gist.github.com/raw/796172/724c7ca237a7f6b8d857c4ac2991cfe5ffb18087/vwilight.vim > colors/vwilight.vim"
 end
+
+vim_plugin_task 'jinja', 'http://www.vim.org/scripts/download_script.php?src_id=8666', 'syntax'
+vim_plugin_task 'htmljinja', 'http://www.vim.org/scripts/download_script.php?src_id=6961', 'syntax'
+vim_plugin_task 'autoclose', 'http://www.vim.org/scripts/download_script.php?src_id=10873', 'plugin'
+vim_plugin_task 'ragtag', 'https://github.com/markstory/vim-ragtag.git'
 
 if File.exists?(janus = File.expand_path("~/.janus.rake"))
   puts "Loading your custom rake file"
