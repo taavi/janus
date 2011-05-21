@@ -234,7 +234,7 @@ vim_plugin_task 'ropevim' do
   sh "[ -s tmp/rope-0.9.3.tar.gz ] || curl -o tmp/rope-0.9.3.tar.gz http://pypi.python.org/packages/source/r/rope/rope-0.9.3.tar.gz#md5=b04971636816d62157cf26e2ec5c1a37"
   sh "(cd tmp; tar xfz rope-0.9.3.tar.gz)"
   sh "cp -a tmp/rope-0.9.3/rope python/."
-  sh "[ -d tmp/ropemode ] && (hg -R tmp/ropemode pull && hg -R tmp/ropemode up) || hg clone https://bitbucket.org/agr/ropemode python/ropemode"
+  sh "[ -d tmp/ropemode ] && (hg -R tmp/ropemode pull && hg -R tmp/ropemode up) || hg clone https://bitbucket.org/agr/ropemode tmp/ropemode"
   sh "cp -a tmp/ropemode/ropemode python/."
   sh "rm -Rf tmp/ropevim"
   sh "[ -d tmp/ropevim ] && (hg -R tmp/ropevim pull && hg -R tmp/ropevim up) || hg clone https://bitbucket.org/agr/ropevim tmp/ropevim"
