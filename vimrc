@@ -142,7 +142,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color evening
+color dawn
 set guifont=Monaco:h12
 
 " Directories for swp files
