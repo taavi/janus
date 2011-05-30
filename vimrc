@@ -32,6 +32,8 @@ set smartcase
 set gdefault
 nnoremap / /\v
 vnoremap / /\v
+set grepprg=ack\ --column
+set grepformat=%f:%l:%c:%m
 
 " Clear search highlighting
 map <Leader><Space> :nohl<CR>
