@@ -129,7 +129,6 @@ def skip_vim_plugin(name)
   Rake::Task[:default].prerequisites.delete(name)
 end
 
-vim_plugin_task "ack.vim",          "git://github.com/mileszs/ack.vim.git"
 vim_plugin_task "color-sampler",    "git://github.com/vim-scripts/Color-Sampler-Pack.git"
 vim_plugin_task "conque",           "http://conque.googlecode.com/files/conque_1.1.tar.gz"
 vim_plugin_task "fugitive",         "git://github.com/tpope/vim-fugitive.git"
@@ -226,8 +225,8 @@ end
 
 vim_plugin_task 'jinja', 'http://www.vim.org/scripts/download_script.php?src_id=8666', 'syntax'
 vim_plugin_task 'htmljinja', 'http://www.vim.org/scripts/download_script.php?src_id=6961', 'syntax'
-vim_plugin_task 'autoclose', 'http://www.vim.org/scripts/download_script.php?src_id=10873', 'plugin'
 vim_plugin_task 'ragtag', 'https://github.com/markstory/vim-ragtag.git'
+vim_plugin_task 'autoclose', 'https://github.com/Townk/vim-autoclose.git'
 
 vim_plugin_task 'ropevim' do
   sh "mkdir -p python"

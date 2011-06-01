@@ -7,23 +7,36 @@ syntax on
 " Set encoding
 set encoding=utf-8
 
+let mapleader=','
+
 " Whitespace stuff
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set list listchars=tab:▸\ ,eol:¬,trail:·
 set noeol
+set autoindent
 
 " Window settings
 set wrap
 set lbr
 set textwidth=120
+set cursorline
+set ttyfast
 
 " Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set gdefault
+nnoremap / /\v
+vnoremap / /\v
+set grepprg=ack\ --column
+set grepformat=%f:%l:%c:%m
+
+" Clear search highlighting
+map <Leader><Space> :nohl<CR>
 
 " Tab completion
 set wildmode=list:longest,list:full
@@ -38,7 +51,8 @@ set statusline=%t\ %y\ format:\ %{&ff};\ [%l,%c]
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
 
-let mapleader=','
+" Save on blur
+au FocusLost * :wa
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
@@ -57,9 +71,6 @@ let tlist_php_settings = 'php;c:class;d:constant;f:function'
 
 " Move to occurances
 map <Leader>f [I:let nr = input("Which one:")<Bar>exe "normal " . nr . "[\t"<CR>
-
-" Clear search highlighting
-map <Leader><Space> :nohl<CR>
 
 " Remember last location in file
 if has("autocmd")
@@ -145,7 +156,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color evening
+color dawn
 set guifont=Monaco:h12
 
 " Directories for swp files
